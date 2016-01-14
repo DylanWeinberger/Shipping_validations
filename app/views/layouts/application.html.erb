@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fatcat</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<%= "You are signed in as #{@current_smuggler.username}" if @current_smuggler %>
+
+	<% if session[:smuggler_id] %>
+	<%= content_tag :h4, "Smuggler logged in!" %>
+	<% else %>
+	<%= content_tag :h4, "Not logged in!" %>
+	<% end %>
+
+		<% if flash[:notice] %>
+  				<div class = "alert alert-success"><%= flash[:notice] %></div>
+				<% end %>
+				<% if flash[:alert] %>
+  				<div class = "alert alert-success"><%= flash[:alert] %></div>
+				<% end %>
+
+<%= yield %>
+
+</body>
+</html>

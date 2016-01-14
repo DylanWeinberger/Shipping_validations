@@ -1,0 +1,2 @@
+module SmugglersHelper
+end

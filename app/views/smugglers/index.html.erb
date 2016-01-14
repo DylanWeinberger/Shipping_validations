@@ -1,0 +1,9 @@
+<h1>All Smugglers</h1>
+
+<% @smugglers.each do |smuggler| %>
+	<%= link_to(smuggler.username, smuggler_path(smuggler.id), method: :get) %>
+	<%= smuggler.username %>
+	<%= smuggler.email %>
+	<%= smuggler.location %>
+	<%= smuggler.home %>
+	<% end %>
