@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
   		@current_smuggler = Smuggler.find(session[:smuggler_id])
   	end
   end
+
+  def current_tycoon
+	if session[:tycoon_id]
+  		@current_tycoon = tycoon.find(session[:tycoon_id])
+  	end
+  end
 end

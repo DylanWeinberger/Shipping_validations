@@ -8,12 +8,13 @@ resources :missions
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'smugglers#index'
+  root 'sessions#new'
 
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create_smuggler_session',  as: :login_smuggler
-  delete 'logout' => 'sessions#destroy_smuggler_session', as: :logout_smuggler
+  delete 'logout' => 'sessions#destroy_session', as: :logout
+  post 'login_tycoon' => 'sessions#create_tycoon_session', as: :login_tycoon
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

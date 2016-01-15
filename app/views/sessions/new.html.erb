@@ -1,9 +1,23 @@
+					<h1>Login Smuggler</h1>
+
 					<%= form_tag("/login", method: "post") do %>  
-				     <%=label_tag(:email, "email:") %>   
-				     <%=text_field_tag(:email) %>
+				     <%=label_tag(:username, "username:") %>   
+				     <%=text_field_tag(:username) %>
 				     <br>
 				     <%=label_tag(:password, "password:") %>   
 				     <%=password_field_tag(:password) %> 
 				     <br>  
 				     <%=submit_tag("Submit") %> 
 				     <% end %>
+				     <h1>Login Tycoon</h1>
+
+				     <%= form_tag("/login_tycoon", method: "post") do %>  
+				     <%=label_tag(:username, "username:") %>   
+				     <%=text_field_tag(:username) %>
+				     <br>
+				     <%=label_tag(:password, "password:") %>   
+				     <%=password_field_tag(:password) %> 
+				     <br>  
+				     <%=submit_tag("Submit") %> 
+				     <% end %>
+
