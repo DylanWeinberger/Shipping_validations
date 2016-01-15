@@ -6,5 +6,5 @@ class Mission < ActiveRecord::Base
 	validates_presence_of :cost
 	validates_uniqueness_of :name
 	validates :cost, numericality: {greater_than: 1000} 
-	validates_uniqueness_of :origin, scope: :destination
+	# validates_uniqueness_of :origin, scope: :destination
 end
