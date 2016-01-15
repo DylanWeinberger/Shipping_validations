@@ -1,6 +1,10 @@
-raclass TycoonController < ApplicationController
+class TycoonsController < ApplicationController
 	def index
+		@tycoons = Tycoon.all
+	end
 
+	def show
+		@tycoon = Tycoon.find(params[:id])
 	end
 
 	def new
@@ -22,12 +26,11 @@ raclass TycoonController < ApplicationController
 
 	end
 
-	def destroy
-		if 
-		@tycoon = Tycoon.find(params[:id])
-		@tycoon.destroy
-		redirect_to :back
-		flash[:notice] = "Your FatCat was destroyed..."
+	def destroy 
+			@tycoon = Tycoon.find(params[:id])
+			@tycoon.destroy
+			redirect_to :back
+			flash[:notice] = "Your FatCat was destroyed..."
 	end
 
 	private
