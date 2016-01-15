@@ -1,7 +1,7 @@
 class MissionsController < ApplicationController
 	
 	def index
-		@mission = Mission.all
+		@missions = Mission.all
 	end
 
 	def new
@@ -10,6 +10,14 @@ class MissionsController < ApplicationController
 
 	def create
 		@mission = Mission.new(mission_params)
+		@mission.smuggler_id = session[:smuggler_id]
+		if @mission.save
+			flash[:notice] = "Your mission was saved"
+			redirect_to root_path
+		else
+			flash[:notice] = "Your mission was not saved"
+			redirect_to root_path
+		end
 	end
 
 	def show
@@ -30,6 +38,7 @@ class MissionsController < ApplicationController
 
 	def destroy
 		@mission = Mission.find(params[:id])
+		@mission.destroy
 	end
 
 	private

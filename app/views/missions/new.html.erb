@@ -6,9 +6,9 @@
 	<%= f.label :cargo %>
 	<%= f.text_field :cargo, size: "60x12" %>
 	<%= f.label :cost %>
-	<%= f.number_field :cost, step: 0.5) %>
-	<%= f.label :cost %>
-	<%= f.hidden_field :smuggler_id %>
+	<%= f.number_field :cost, step: 1 %>
+	<%= f.label :containers %>
+	<%= f.number_field :containers, step: 1 %>
 
 	<%= f.submit :create %>
 	<% end %>

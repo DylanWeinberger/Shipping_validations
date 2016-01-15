@@ -22,6 +22,7 @@
 	<%= link_to("Log In Smuggler", login_smuggler_path, method: :get) %>
 	<%= link_to("All smugglers", '/smugglers', method: :get) %>
 	<%= link_to("New smuggler", '/smugglers/new', method: :get) %>
+	<%= link_to("New Mission", '/missions/new', method: :get) %>
 
 		<% if flash[:notice] %>
   				<div class = "alert alert-success"><%= flash[:notice] %></div>
