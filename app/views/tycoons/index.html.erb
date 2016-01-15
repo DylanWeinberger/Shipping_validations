@@ -1,0 +1,7 @@
+<h1>All Tycoons</h1>
+<% @tycoons.each do |t| %>
+	<%= link_to t.username, tycoon_path(t.id), method: :get %>
+	<%= t.email %>
+	
+	<% end %>
+	
