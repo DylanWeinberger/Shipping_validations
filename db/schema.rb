@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114194743) do
+ActiveRecord::Schema.define(version: 20160114214845) do
 
   create_table "missions", force: :cascade do |t|
     t.integer  "smuggler_id"
@@ -29,19 +29,19 @@ ActiveRecord::Schema.define(version: 20160114194743) do
   create_table "smugglers", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "tycoons", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.string   "password"
+    t.string   "password_digest"
     t.string   "cigar"
     t.decimal  "networth"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "vehicles", force: :cascade do |t|
