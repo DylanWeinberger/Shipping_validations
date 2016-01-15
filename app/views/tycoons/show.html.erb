@@ -3,3 +3,7 @@
 <%= @tycoon.email %>
 <%= @tycoon.cigar %>
 <%= @tycoon.networth %>
+<h2>Tycoons Vehicles</h2>
+<% @tycoon.vehicles.each do |v| %>
+<%= v.name %>
+<% end %>

@@ -6,6 +6,7 @@ class MissionsController < ApplicationController
 
 	def new
 		@mission = Mission.new
+		@vehicles = Vehicle.all
 	end
 
 	def create

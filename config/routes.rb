@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'vehicles/index'
+
+  get 'vehicles/new'
+
 resources :smugglers
 resources :tycoons
 resources :missions
