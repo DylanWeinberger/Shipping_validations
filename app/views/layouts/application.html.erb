@@ -7,18 +7,43 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<%= "You are signed in as #{@current_smuggler.username}" if @current_smuggler %>
-	<%= "You are signed in as #{@current_tycoon.username}" if @current_tycoon %>
+				<% unless session[:smuggler_id] || session[:tycoon_id] %>
+				<h3>Login Smuggler</h3>
+					<%= form_tag("/login", method: "post") do %>  
+				     <%=label_tag(:username, "username:") %>   
+				     <%=text_field_tag(:username) %>
+				     <br>
+				     <%=label_tag(:password, "password:") %>   
+				     <%=password_field_tag(:password) %> 
+				     <br>  
+				     <%=submit_tag("Submit") %> 
+				     <% end %>
+				     <h3>Login Tycoon</h3>
+
+				     <%= form_tag("/login_tycoon", method: "post") do %>  
+				     <%=label_tag(:username, "username:") %>   
+				     <%=text_field_tag(:username) %>
+				     <br>
+				     <%=label_tag(:password, "password:") %>   
+				     <%=password_field_tag(:password) %> 
+				     <br>  
+				     <%=submit_tag("Submit") %> 
+				     <% end %>
+				     <% end %>
 	
 	<% if session[:smuggler_id] %>
-	<%= content_tag :h4, "Smuggler logged in!" %>
+	<%= content_tag :h4, "You are signed in as #{@current_smuggler.username}"  %>
+	<%= link_to("Log Out", '/logout', method: :delete) %>
 	<% elsif session[:tycoon_id] %>
-	<%= content_tag :h4, "Tycoon logged in!" %>
+	<%= content_tag :h4, "You are signed in as Tycoon" %>
+	<%= link_to("Log Out", '/logout', method: :delete) %>
+	<!-- #{@current_tycoon.username} -->
+	<!-- username not showing? -->
 	<% else %>
 	<%= content_tag :h4, "Not logged in!" %>
 	<% end %>
 
-	<%= link_to("Log Out", '/logout', method: :delete) %>
+	
 	<%= link_to("Log In Smuggler", login_smuggler_path, method: :get) %>
 	<%= link_to("All smugglers", '/smugglers', method: :get) %>
 	<%= link_to("New smuggler", '/smugglers/new', method: :get) %>
