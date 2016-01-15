@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115183735) do
+ActiveRecord::Schema.define(version: 20160115193711) do
 
   create_table "missions", force: :cascade do |t|
     t.integer  "smuggler_id"
     t.integer  "vehicle_id"
     t.decimal  "cost"
     t.text     "cargo"
-    t.integer  "origin"
-    t.integer  "destination"
+    t.string   "origin"
+    t.string   "destination"
     t.string   "name"
     t.integer  "containers"
     t.datetime "created_at",  null: false
