@@ -8,19 +8,27 @@
 </head>
 <body>
 	<%= "You are signed in as #{@current_smuggler.username}" if @current_smuggler %>
-
+	<%= "You are signed in as #{@current_tycoon.username}" if @current_tycoon %>
+	
 	<% if session[:smuggler_id] %>
 	<%= content_tag :h4, "Smuggler logged in!" %>
+	<% elsif session[:tycoon_id] %>
+	<%= content_tag :h4, "Tycoon logged in!" %>
 	<% else %>
 	<%= content_tag :h4, "Not logged in!" %>
 	<% end %>
+
+	<%= link_to("Log Out", '/logout', method: :delete) %>
+	<%= link_to("Log In Smuggler", login_smuggler_path, method: :get) %>
+	<%= link_to("All smugglers", '/smugglers', method: :get) %>
+	<%= link_to("New smuggler", '/smugglers/new', method: :get) %>
 
 		<% if flash[:notice] %>
   				<div class = "alert alert-success"><%= flash[:notice] %></div>
 				<% end %>
 				<% if flash[:alert] %>
   				<div class = "alert alert-success"><%= flash[:alert] %></div>
-				<% end %>
+		<% end %>
 
 <%= yield %>
 

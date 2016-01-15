@@ -15,9 +15,9 @@ class SmugglersController < ApplicationController
   def create
 	  	@smuggler = Smuggler.new(smuggler_params)
 		  	if @smuggler.save
-		  		redirect_to smugglers_path
+		  		redirect_to login_path
 		  		flash[:notice] = "Your account was created."
-		  		create_smuggler_session
+		  		
 		  	else
 		  		redirect_to :back
 		  		flash[:notice] = "Something went wrong."
@@ -25,12 +25,20 @@ class SmugglersController < ApplicationController
   end
 
   def edit
-    
+    @smuggler = Smuggler.find(params[:id])
 
   end
 
   def update
-
+    @smuggler = Smuggler.find(params[:id])
+    if current_smuggler
+      @smuggler.update(smuggler_params)
+      redirect_to smuggler_path @smuggler
+      flash[:notice] = "Smuggler Updated!"
+    else
+      redirect_to :back
+      flash[:notice] = "Not your profile to edit."
+    end
   end
 
   def destroy
@@ -41,6 +49,7 @@ class SmugglersController < ApplicationController
   	
   	redirect_to root_path
   end
+
 
   private
   

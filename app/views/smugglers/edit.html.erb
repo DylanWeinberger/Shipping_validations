@@ -1,0 +1,8 @@
+			<h1>Update your Profile</h1>
+			<%= form_for @smuggler do |f| %>
+			<%= f.label :username %>
+			<%= f.text_field :username %>
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+			<%= f.submit :update %>
+			<% end %>

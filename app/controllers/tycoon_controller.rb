@@ -1,4 +1,4 @@
-class TycoonController < ApplicationController
+raclass TycoonController < ApplicationController
 	def index
 
 	end
@@ -23,7 +23,11 @@ class TycoonController < ApplicationController
 	end
 
 	def destroy
-
+		if 
+		@tycoon = Tycoon.find(params[:id])
+		@tycoon.destroy
+		redirect_to :back
+		flash[:notice] = "Your FatCat was destroyed..."
 	end
 
 	private

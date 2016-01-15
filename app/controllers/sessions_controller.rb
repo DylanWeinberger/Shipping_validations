@@ -7,20 +7,22 @@ class SessionsController < ApplicationController
 
 	def create_smuggler_session
 
-		@smuggler = Smuggler.where(email: params[:email]).first
-		if @smuggler && @smuggler.password == params[:password]
+		@smuggler = Smuggler.where(username: params[:username]).first
+		if @smuggler && @smuggler.authenticate(params[:password])
 			session[:smuggler_id] = @smuggler.id
 			redirect_to @smuggler
 			flash[:notice] = "Your smuggler has been signed in."
 		else
+			redirect_to :back
 			flash[:alert] = "We were unable to sign you in."
-			redirect_to root_path
+			
 		end
 	end
 
-	def destroy_smuggler_session
+	def destroy_session
 
 			session[:smuggler_id] = nil
+			session[:tycoon_id] = nil
 			flash[:notice] = "You have been logged out."
 			redirect_to root_path
 
@@ -28,22 +30,23 @@ class SessionsController < ApplicationController
 
 	def create_tycoon_session
 
-		@tycoon = Tycoon.where(email: params[:email]).first
-		if @tycoon && @tycoon.password == params[:password]
+		@tycoon = Tycoon.where(username: params[:username]).first
+		if @tycoon && @tycoon.authenticate(params[:password])
 			session[:tycoon_id] = @tycoon.id
 			redirect_to root_path
 			flash[:notice] = "Your Tycoon has been signed in."
 		else
-			flash[:alert] = "We were unable to sign you in."
+			
 			redirect_to root_path
+			flash[:alert] = "We were unable to sign you in."
 		end
 	end
 
-	def destroy_tycoon_session
+	# def destroy_tycoon_session
 
-			session[:tycoon_id] = nil
-			flash[:notice] = "You have been logged out."
-			redirect_to root_path
+	# 		session[:tycoon_id] = nil
+	# 		flash[:notice] = "You have been logged out."
+	# 		redirect_to root_path
 
-	end
+	# end
 end
