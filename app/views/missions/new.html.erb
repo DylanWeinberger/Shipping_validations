@@ -9,6 +9,8 @@
 	<%= f.number_field :cost, step: 1 %>
 	<%= f.label :containers %>
 	<%= f.number_field :containers, step: 1 %>
+	<% options = options_from_collection_for_select(@vehicles, 'id', 'name') %>
+	<%= f.select :vehicle_id,  options %>
 
 	<%= f.submit :create %>
 	<% end %>
