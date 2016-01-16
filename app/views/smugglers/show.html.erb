@@ -2,9 +2,19 @@
 <%= @smuggler.username %>
 <%= @smuggler.email %>
 <%= image_tag @smuggler.avatar.url(:medium) %>
+<% if logged_in_ty? || current_smuggler.id == @smuggler.id %> 
+<%= link_to "Delete Smuggler", smuggler_path(@smuggler), method: :delete %>
+<%= link_to "Update Smuggler", edit_smuggler_path(@smuggler), method: :get %>
+
+<% end %>
+<h3>Mission Info</h3>
+<% @smuggler.missions.each do |mission| %>
+<%= mission.name %>
+<%= mission.cost %>
+<%= mission.vehicle.name %>
+<%= image_tag mission.vehicle.image(:thumb) %>
+<% end %>
 
 
-<%= link_to "Delete User", smuggler_path(@smuggler), method: :delete %>
-<%= link_to "Update User", edit_smuggler_path(@smuggler), method: :get %>
 
 

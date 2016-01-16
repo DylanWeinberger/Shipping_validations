@@ -1,7 +1,16 @@
-<h1>All Smugglers</h1>
+<h1>The Smugglers</h1>
 
 <% @smugglers.each do |smuggler| %>
 	<%= link_to(smuggler.username, smuggler_path(smuggler.id), method: :get) %>
 	<%= smuggler.username %>
 	<%= smuggler.email %>
+	<%= image_tag smuggler.avatar.url(:thumb) %>
 	<% end %>
+
+<h1>The Tycoons</h1>
+<% @tycoons.each do |t| %>
+	<%= link_to t.username, tycoon_path(t.id), method: :get %>
+	<%= image_tag t.avatar.url(:thumb)  %>
+	
+	<% end %>
+
