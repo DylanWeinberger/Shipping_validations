@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_tycoon
-	if session[:tycoon_id]
-  		@current_tycoon = Tycoon.find(session[:tycoon_id])
-  	end
+    if session[:tycoon_id]
+      @current_tycoon = Tycoon.find(session[:tycoon_id])
+    end
   end
 end

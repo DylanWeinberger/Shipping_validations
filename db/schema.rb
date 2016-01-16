@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115193711) do
+ActiveRecord::Schema.define(version: 20160116172741) do
 
   create_table "missions", force: :cascade do |t|
     t.integer  "smuggler_id"
@@ -30,8 +30,12 @@ ActiveRecord::Schema.define(version: 20160115193711) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "tycoons", force: :cascade do |t|
@@ -40,15 +44,23 @@ ActiveRecord::Schema.define(version: 20160115193711) do
     t.string   "password_digest"
     t.string   "cigar"
     t.decimal  "networth"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "vehicles", force: :cascade do |t|
     t.string   "name"
     t.integer  "tycoon_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end

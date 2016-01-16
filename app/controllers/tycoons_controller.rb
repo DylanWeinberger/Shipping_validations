@@ -22,9 +22,22 @@ class TycoonsController < ApplicationController
 		end
 	end
 
-	def update
+	 def edit
+    @tycoon = Tycoon.find(params[:id])
 
-	end
+  end
+
+  def update
+    @tycoon = Tycoon.find(params[:id])
+    if session[:tycoon_id]
+      @tycoon.update(tycoon_params)
+      redirect_to tycoon_path @tycoon
+      flash[:notice] = "Tycoon Updated!"
+    else
+      redirect_to :back
+      flash[:notice] = "Not your profile to edit."
+    end
+  end
 
 	def destroy 
 			@tycoon = Tycoon.find(params[:id])
@@ -38,6 +51,6 @@ class TycoonsController < ApplicationController
 
 	def tycoon_params
 
-		params.require(:tycoon).permit(:username, :email, :password, :home, :cigar, :networth)
+		params.require(:tycoon).permit(:username, :email, :password, :home, :cigar, :networth, :avatar)
 	end
 end

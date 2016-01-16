@@ -1,5 +1,6 @@
-<%= form_for @vehicles do |f| %>
+<%= form_for @vehicles, :html => { :multipart => true }  do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
+<%= f.file_field :image %>
 <%= f.submit :create %>
 <% end %>

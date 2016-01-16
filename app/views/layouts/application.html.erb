@@ -44,10 +44,14 @@
 	<% end %>
 
 	
-	<%= link_to("Log In Smuggler", login_smuggler_path, method: :get) %>
+	<%= link_to("Become a smuggler", '/smugglers/new', method: :get) %>
 	<%= link_to("All smugglers", '/smugglers', method: :get) %>
-	<%= link_to("New smuggler", '/smugglers/new', method: :get) %>
-	<%= link_to("New Mission", '/missions/new', method: :get) %>
+	
+	
+	<% if session[:tycoon_id] %>
+	<%= link_to("Create a Mission", '/missions/new', method: :get) %>
+	<%= link_to("Register your vehicle", '/vehicles/new', method: :get) %>
+	<% end %>
 
 		<% if flash[:notice] %>
   				<div class = "alert alert-success"><%= flash[:notice] %></div>
