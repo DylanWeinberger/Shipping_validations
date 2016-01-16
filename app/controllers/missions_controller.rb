@@ -8,12 +8,12 @@ class MissionsController < ApplicationController
 	def new
 		@mission = Mission.new
 		@vehicles = Vehicle.all
+		@smugglers = Smuggler.all
 	end
 
 	def create
 		@mission = Mission.new(mission_params)
-		@mission.smuggler_id = session[:smuggler_id]
-		if session[:tycoon_id]
+		if logged_in_ty?
 			if @mission.origin != @mission.destination
 				if @mission.save
 					flash[:notice] = "Your mission was saved"
@@ -34,6 +34,12 @@ class MissionsController < ApplicationController
 	def show
 
 		@mission = Mission.find(params[:id])
+		@smuggler_id = @mission.smuggler_id
+		if Smuggler.find(@smuggler_id) 
+			@smuggler = Smuggler.find(@smuggler_id) 
+		else
+			@smuggler = "Classified."
+		end
 
 	end
 
@@ -48,15 +54,21 @@ class MissionsController < ApplicationController
 	end
 
 	def destroy
-		@mission = Mission.find(params[:id])
-		@mission.destroy
+		if logged_in_ty
+			@mission = Mission.find(params[:id])
+			@mission.destroy
+			redirect_to missions_path
+		else
+			redirect_to :back
+			flash[:notice] = "You must be a Tycoon to cancel a mission."
+		end
 	end
 
 	private
 
 	def mission_params
 
-	params.require(:mission).permit(:cost, :cargo, :origin, :destination, :name, :vehicle_id)
+	params.require(:mission).permit(:cost, :cargo, :origin, :destination, :name, :vehicle_id, :smuggler_id)
 	end
 
 end

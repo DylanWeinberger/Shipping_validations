@@ -11,13 +11,18 @@ class VehiclesController < ApplicationController
 
 	  	@vehicle = Vehicle.new(vehicle_params)
 	  	@vehicle.tycoon_id = session[:tycoon_id]
-	  	if @vehicle.save
-	  		redirect_to root_path
-	  		flash[:notice] = "Your Vehicle has been created."
-	  	else 
-	  		redirect_to root_path
-	  		flash[:notice] = "Your Vehicle was not created sucessfully."
-	  	end
+      if logged_in_ty?
+  	  	if @vehicle.save
+  	  		redirect_to root_path
+  	  		flash[:notice] = "Your Vehicle has been created."
+  	  	else 
+  	  		redirect_to root_path
+  	  		flash[:notice] = "Your Vehicle was not created sucessfully."
+  	  	end
+      else
+        redirect_to :back
+        flash[:notice] = "You must be a Tycoon to create a vehicle."
+      end
   end
   private
 

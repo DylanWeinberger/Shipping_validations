@@ -30,30 +30,23 @@
 				     <%=submit_tag("Submit") %> 
 				     <% end %>
 				     <% end %>
-	
-	<% if session[:smuggler_id] %>
-	<%= content_tag :h4, "You are signed in as #{@current_smuggler.username}"  %>
-	<%= link_to("Log Out", '/logout', method: :delete) %>
-	<% elsif session[:tycoon_id] %>
-	<%= content_tag :h4, "You are signed in as Tycoon" %>
+	<% if logged_in? -%>Welcome, <%= content_tag :p, "smuggler" %> <%=current_smuggler.username %><% end -%>
+	<% if logged_in_ty? -%>Welcome, <%= current_tycoon.username %><% end -%>
 	<%= link_to("Log Out", '/logout', method: :delete) %>
 	<!-- #{@current_tycoon.username} -->
 	<!-- username not showing? -->
-	<% else %>
-	<%= content_tag :h4, "Not logged in!" %>
-	<% end %>
 
 	
-	<%= link_to("Become a smuggler", '/smugglers/new', method: :get) %>
-	<%= link_to("All smugglers", '/smugglers', method: :get) %>
+	<%= link_to("Become a smuggler", new_smuggler_path, method: :get) %>
+	<%= link_to("All smugglers", smugglers_path, method: :get) %>
 	
 	
 	<% if session[:tycoon_id] %>
-	<%= link_to("Create a Mission", '/missions/new', method: :get) %>
-	<%= link_to("Register your vehicle", '/vehicles/new', method: :get) %>
+	<%= link_to("Create a Mission", new_mission_path, method: :get) %>
+	<%= link_to("Register your vehicle", new_vehicle_path, method: :get) %>
 	<% end %>
 
-		<% if flash[:notice] %>
+				<% if flash[:notice] %>
   				<div class = "alert alert-success"><%= flash[:notice] %></div>
 				<% end %>
 				<% if flash[:alert] %>
