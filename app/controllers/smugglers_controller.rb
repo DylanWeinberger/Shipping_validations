@@ -55,7 +55,7 @@ class SmugglersController < ApplicationController
   
   def smuggler_params
 
-		params.require(:smuggler).permit(:username, :email, :password, :location, :home)
+		params.require(:smuggler).permit(:username, :email, :password, :location, :home, :avatar)
 
   end
 

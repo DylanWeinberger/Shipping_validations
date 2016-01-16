@@ -1,9 +1,14 @@
 <h1>Tycoon Profile Page</h1>
 <%= @tycoon.username %>
+<%= image_tag @tycoon.avatar.url(:medium) %>
 <%= @tycoon.email %>
 <%= @tycoon.cigar %>
 <%= @tycoon.networth %>
+
 <h2>Tycoons Vehicles</h2>
 <% @tycoon.vehicles.each do |v| %>
 <%= v.name %>
+<%= image_tag v.image.url(:medium) %>
 <% end %>
+
+<%= link_to "Update Tycoon", edit_tycoon_path(@tycoon), method: :get %>

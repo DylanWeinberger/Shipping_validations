@@ -13,17 +13,22 @@ class MissionsController < ApplicationController
 	def create
 		@mission = Mission.new(mission_params)
 		@mission.smuggler_id = session[:smuggler_id]
-		if @mission.origin != @mission.destination
-			if @mission.save
-				flash[:notice] = "Your mission was saved"
-				redirect_to root_path
+		if session[:tycoon_id]
+			if @mission.origin != @mission.destination
+				if @mission.save
+					flash[:notice] = "Your mission was saved"
+					redirect_to root_path
+				else
+					flash[:notice] = "Your mission was not saved"
+					redirect_to root_path
+				end
 			else
-				flash[:notice] = "Your mission was not saved"
-				redirect_to root_path
+				redirect_to :back
 			end
 		else
 			redirect_to :back
-		end
+			flash[:notice] = "Must be logged in as a Tycoon to create a Mission!"
+		end	
 	end
 
 	def show
