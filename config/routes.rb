@@ -8,9 +8,11 @@ Rails.application.routes.draw do
 
   get 'vehicles/new'
 
+
 resources :smugglers do
   resources :relationships
 end
+
 
 resources :tycoons
 resources :missions
@@ -31,6 +33,7 @@ resources :vehicles
   # Relationship Routes
   post '/smuggler/:smuggler_id/' => 'relationships#create'
   delete '/smuggler/:smuggler_id' => 'relationships#destroy'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
