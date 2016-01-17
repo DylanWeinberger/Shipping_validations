@@ -1,16 +1,18 @@
-<h1>The Smugglers</h1>
+<div class = "user_content">
 
-<% @smugglers.each do |smuggler| %>
-	<%= link_to(smuggler.username, smuggler_path(smuggler.id), method: :get) %>
-	<%= smuggler.username %>
-	<%= smuggler.email %>
-	<%= image_tag smuggler.avatar.url(:thumb) %>
-	<% end %>
 
-<h1>The Tycoons</h1>
-<% @tycoons.each do |t| %>
-	<%= link_to t.username, tycoon_path(t.id), method: :get %>
-	<%= image_tag t.avatar.url(:thumb)  %>
-	
-	<% end %>
+	<div class="smug_index">
+		<h3>The Smugglers</h3>
+			<% @smugglers.each do |smuggler| %>
+				<%= image_tag smuggler.avatar.url(:thumb), class: 'avatar' %>
+				<%= link_to smuggler.username, smuggler_path(smuggler.id), method: :get, class: 'smuggler_name' %>
+				<br><br>
+			<% end %>
+		<h3>The Tycoons</h3>
+		<% @tycoons.each do |t| %>
+			<%= image_tag t.avatar.url(:thumb), class: 'avatar' %>
+			<%= link_to t.username, tycoon_path(t.id), method: :get,  class: 'smuggler_name' %>
+		<% end %>
+	</div>
+</div>
 

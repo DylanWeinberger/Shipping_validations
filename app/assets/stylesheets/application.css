@@ -13,3 +13,58 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+	background-image: url(47.jpg);
+	background-attachment: fixed;
+	background-repeat: repeat;
+	background-position: center;
+	width: 100%;
+}
+
+#content_container {
+	position: absolute;
+	left: 30%;
+	background-image: url(paper.png);
+	background-repeat: none;
+	background-position: center;
+	width: 900px;
+	height: 550px;
+	box-shadow: 7px 7px 3px #2F1F00;
+	overflow: auto;
+}
+
+.user_content {
+	position: relative;
+	padding: 20px;
+	left: 10%;
+	font-family: 'Rock Salt', cursive;
+	color: rgba(47, 31, 0, .7);
+	font-size: 30px;
+	border-radius: 8px;
+
+	
+}
+
+.avatar {
+	box-shadow: 7px 7px 3px #2F1F00;
+}
+
+
+
+
+.smuggler_name {
+	font-size: 25px;
+	font-family: 'Rock Salt', cursive;
+	text-decoration: none;
+	color: rgba(47, 31, 0, .7);
+	transition: .7s;
+}
+
+.smuggler_name:hover {
+	opacity: 1;
+	text-decoration: underline;
+
+}
+
+
