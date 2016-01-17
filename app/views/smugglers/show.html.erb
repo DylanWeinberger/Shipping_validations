@@ -1,8 +1,6 @@
-<h1>Smuggler's Profile Page</h1>
-<%= @smuggler.username %>
-<%= @smuggler.email %>
-
-
-<%= link_to "Delete User", smuggler_path(@smuggler), method: :delete %>
+<h1>Welcome to <%= @smuggler.username %>'s Smuggler Page</h1>
+<h2>Name: <%= @smuggler.username %></h2>
+<h2>Contact Info: <%= @smuggler.email %></h2>
+<%= link_to "Fire Smuggler", smuggler_path(@smuggler), method: :delete %>
 
 

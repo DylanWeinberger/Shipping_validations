@@ -4,4 +4,10 @@
 	<%= link_to(smuggler.username, smuggler_path(smuggler.id), method: :get) %>
 	<%= smuggler.username %>
 	<%= smuggler.email %>
+	<% if @current_smuggler.following?(smuggler) %>
+		<%= button_to "unfollow", smuggler_relationship_path(smuggler.id, @current_smuggler.id), method: :delete %>
+	<% else %>
+		<%= button_to "follow", smuggler_relationship_path(smuggler.id, @current_smuggler.id), method: :post %>
 	<% end %>
+<% end %>
+

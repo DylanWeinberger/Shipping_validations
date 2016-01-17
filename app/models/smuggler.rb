@@ -9,4 +9,26 @@ class Smuggler < ActiveRecord::Base
 	# validates_uniqueness_of  :email
 	# validates_uniqueness_of :username
 	# We can uncomment these when we are further along
+
+	has_many :active_relationships, class_name: "Relationship",
+	foreign_key: "follower_id",
+	dependent: :destroy
+	has_many :passive_relationships, class_name: "Relationship",
+	foreign_key: "followed_id",
+	dependent: :destroy
+	has_many :following, through: :active_relationships, source: :followed
+	has_many :followers, through: :passive_relationships, source: :follower
+
+
+	def follow!(other_smuggler)
+		active_relationships.create(followed_id: other_smuggler.id)
+	end
+
+	def unfollow!(other_smuggler)
+		active_relationships.find_by(followed_id: other_smuggler.id).destroy
+	end
+
+	def following?(other_smuggler)
+		following.include?(other_smuggler)
+	end
 end
