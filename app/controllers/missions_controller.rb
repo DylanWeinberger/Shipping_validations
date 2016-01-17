@@ -35,11 +35,12 @@ class MissionsController < ApplicationController
 
 		@mission = Mission.find(params[:id])
 		@smuggler_id = @mission.smuggler_id
-		if Smuggler.find(@smuggler_id) 
-			@smuggler = Smuggler.find(@smuggler_id) 
-		else
-			@smuggler = "Classified."
-		end
+		# if Smuggler.find(@smuggler_id) 
+		# 	@smuggler = Smuggler.find(@smuggler_id) 
+		# else
+		# 	@smuggler = "Classified."
+		# end
+		# the above code is an attempt to show a smuggler name on a mission page.
 
 	end
 
@@ -54,7 +55,7 @@ class MissionsController < ApplicationController
 	end
 
 	def destroy
-		if logged_in_ty
+		if logged_in_ty?
 			@mission = Mission.find(params[:id])
 			@mission.destroy
 			redirect_to missions_path
@@ -63,6 +64,8 @@ class MissionsController < ApplicationController
 			flash[:notice] = "You must be a Tycoon to cancel a mission."
 		end
 	end
+
+	layout 'mission'
 
 	private
 

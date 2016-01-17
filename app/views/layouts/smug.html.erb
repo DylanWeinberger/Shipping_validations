@@ -9,9 +9,9 @@
 </head>
 <body>
 	<div class="smug_container">
-		<% unless session[:smuggler_id] || session[:tycoon_id] %>
+				<% unless session[:smuggler_id] || session[:tycoon_id] %>
 			<div class = "login">
-				<h3>Login Smuggler</h3>
+				<h3>Smugglers</h3>
 					<%= form_tag("/login", method: "post") do %>  
 						<%=label_tag(:username, "username:") %>   
 						<%=text_field_tag(:username) %>
@@ -20,12 +20,12 @@
 						<%=submit_tag("Submit") %> 
 					<% end %>
 
-				<h3>Login Tycoon</h3>
+				<h3>Tycoons</h3>
 					<%= form_tag("/login_tycoon", method: "post") do %>  
 						<%=label_tag(:username, "username:") %>   
 						<%=text_field_tag(:username) %>
 						<%=label_tag(:password, "password:") %>   
-						<%=password_field_tag(:password) %>   
+						<%=password_field_tag(:password)%>   
 						<%=submit_tag("Submit") %> 
 					<% end %>
 			</div>		
@@ -37,16 +37,16 @@
 		</div>	
 		<div class = "nav">
 		 	<div class = "menu-box">
-				<%= link_to("Become a smuggler", new_smuggler_path, method: :get, class: 'linkc') %>
+				<%= link_to("Become a Smuggler", new_smuggler_path, method: :get, class: 'linkc') %>
 			</div>
 			<div class = "menu-box">
-			<%= link_to("All smugglers", smugglers_path, method: :get, class: 'linkc') %>
+			<%= link_to("All Smugglers", smugglers_path, method: :get, class: 'linkc') %>
 			</div>
 			<div class = "menu-box">
-				<%= link_to("Become a smuggler", new_smuggler_path, method: :get, class: 'linkc') %>
+				<%= link_to("Vehicle Showroom", vehicles_path, method: :get, class: 'linkc') %>
 			</div>
 			<div class = "menu-box">
-				<%= link_to("All smugglers", smugglers_path, method: :get, class: 'linkc') %>
+				<%= link_to("Mission Log", missions_path, method: :get, class: 'linkc') %>
 			</div>
 			<% if logged_in_ty? %>
 			<div class = "menu-box">
