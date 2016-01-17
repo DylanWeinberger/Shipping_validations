@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160116172741) do
+ActiveRecord::Schema.define(version: 20160117212637) do
 
   create_table "missions", force: :cascade do |t|
     t.integer  "smuggler_id"
