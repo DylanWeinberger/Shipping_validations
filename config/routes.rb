@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   get 'vehicles/new'
 
-
+# Nested relationship here
+# smugglers/:id/relationships/:id
 resources :smugglers do
   resources :relationships
 end
