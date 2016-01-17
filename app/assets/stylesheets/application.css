@@ -27,6 +27,30 @@
 	left: 0px;
 }
 
+.alert-success {
+	width: 280px;
+   	height: 50px;
+   	background-color: rgb(255, 255, 255);
+   	color: #000000;
+   	font-family: 'Special Elite', cursive;
+   	font-size: 22px;
+   	border-radius: 12px;
+   	padding: 5px;
+   	position: absolute;
+   	bottom: 15%;
+   	left: 75%;
+
+
+} 
+
+.login {
+	position: absolute;
+	/*display: inline;*/
+	bottom: 10%;
+	color: rgb(255, 255, 255);
+	font-family: 'Special Elite', cursive;
+}
+
 .nav {
 	/*display: inline-block;*/
 	width: 100px;

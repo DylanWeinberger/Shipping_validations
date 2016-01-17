@@ -7,6 +7,12 @@ class VehiclesController < ApplicationController
   	@vehicles = Vehicle.new
   end
 
+  def show
+
+    @vehicle = Vehicle.find(params[:id])
+
+  end
+
   def create
 
 	  	@vehicle = Vehicle.new(vehicle_params)
