@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function(){
+
+	$( "#content_container" ).slideUp( 30 ).delay( 1100 ).fadeIn( 1500 );
+
+});

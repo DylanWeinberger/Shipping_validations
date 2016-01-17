@@ -4,13 +4,13 @@
 	<div class="smug_index">
 		<h3>The Smugglers</h3>
 			<% @smugglers.each do |smuggler| %>
-				<%= image_tag smuggler.avatar.url(:thumb), class: 'avatar' %>
+				<%= link_to(image_tag(smuggler.avatar.url(:thumb)), smuggler_path(smuggler.id), method: :get, class: 'avatar') %>
 				<%= link_to smuggler.username, smuggler_path(smuggler.id), method: :get, class: 'smuggler_name' %>
 				<br><br>
 			<% end %>
 		<h3>The Tycoons</h3>
 		<% @tycoons.each do |t| %>
-			<%= image_tag t.avatar.url(:thumb), class: 'avatar' %>
+			<%= link_to(image_tag(t.avatar.url(:thumb)), tycoon_path(t.id), method: :get, class: 'avatar') %>
 			<%= link_to t.username, tycoon_path(t.id), method: :get,  class: 'smuggler_name' %>
 		<% end %>
 	</div>

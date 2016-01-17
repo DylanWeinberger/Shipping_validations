@@ -7,6 +7,7 @@ class SmugglersController < ApplicationController
 
   def show
   		@smuggler = Smuggler.find(params[:id])
+      current_smuggler = @current_smuggler
   end
 
   def new
