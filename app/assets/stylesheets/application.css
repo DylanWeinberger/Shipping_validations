@@ -15,50 +15,95 @@
  */
 
 body {
-	background-image: url(47.jpg);
-	background-attachment: fixed;
+	background-image: url(noirback1.jpg);
+	/*background-attachment: fixed;
 	background-repeat: repeat;
-	background-position: center;
+	background-position: center;*/
 	width: 100%;
+	height:100%;
+	background-size: 100%;
 }
+
+.nav {
+	/*display: inline-block;*/
+	width: 100px;
+	height: 150px;
+	position: absolute;
+	top: 20%;
+	left: 1%;
+	text-align: center;
+	padding: 10px;
+	background-color: rgba(255, 255, 255);
+}
+
+.menu-box {
+
+	position: relative;
+	left: 5%;
+	padding: 10px;
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+	transition: text-decoration 1s;
+}
+
+.linkc {
+	text-decoration: none;
+	font-family: 'Special Elite', cursive;
+	color: rgb(255, 255, 255);
+	/*transform: .7s;*/
+	transition: text-decoration 1s;
+
+}
+
+.linkc:hover {
+	/*text-decoration: ital*/
+	text-decoration: underline;
+	text-transform:;
+}
+
+
 
 #content_container {
 	position: absolute;
-	left: 30%;
-	background-image: url(paper.png);
+	left: 60%;
+	top: 10%;
+	background-color: rgba(245, 245, 245, .6);
 	background-repeat: none;
 	background-position: center;
-	width: 900px;
-	height: 550px;
-	box-shadow: 7px 7px 3px #2F1F00;
+	width: 500px;
+	height: 350px;
+	/*box-shadow: 7px 7px 3px #2F1F00;*/
 	overflow: auto;
+	/*transform: rotate(1deg);*/
 }
 
 .user_content {
 	position: relative;
 	padding: 20px;
 	left: 10%;
-	font-family: 'Rock Salt', cursive;
-	color: rgba(47, 31, 0, .7);
+	font-family: 'Special Elite', cursive;
+	color: #000000;
 	font-size: 30px;
 	border-radius: 8px;
 
 	
 }
 
-.avatar {
-	box-shadow: 7px 7px 3px #2F1F00;
+.avatar:hover {
+	/*box-shadow: 3px 3px 1px #2F1F00;*/
+	/*Maybe we can put this in later*/
 }
+
 
 
 
 
 .smuggler_name {
 	font-size: 25px;
-	font-family: 'Rock Salt', cursive;
+	font-family: 'Special Elite', cursive;
 	text-decoration: none;
-	color: rgba(47, 31, 0, .7);
-	transition: .7s;
+	color: #000000;
+	transition: 1s;
 }
 
 .smuggler_name:hover {

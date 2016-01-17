@@ -1,19 +1,27 @@
 <h1>Smuggler's Profile Page</h1>
+<h4>Alias:</h4>
 <%= @smuggler.username %>
-<%= @smuggler.email %>
-<%= image_tag @smuggler.avatar.url(:medium) %>
-<% if logged_in_ty? || current_smuggler.id == @smuggler.id %> 
-<%= link_to "Delete Smuggler", smuggler_path(@smuggler), method: :delete %>
-<%= link_to "Update Smuggler", edit_smuggler_path(@smuggler), method: :get %>
-
+<h4>Mugshot:</h4>
+<%= image_tag @smuggler.avatar.url(:thumb) %>
+<% if logged_in_ty? %>
+	<%= link_to "Delete Smuggler", smuggler_path(@smuggler), method: :delete %>
+	<%= link_to "Update Smuggler", edit_smuggler_path(@smuggler), method: :get %>
+<% elsif logged_in? %>
+	<% current_smuggler.id == @smuggler.id %>
+		<%= link_to "Delete Smuggler", smuggler_path(@smuggler), method: :delete %>
+		<%= link_to "Update Smuggler", edit_smuggler_path(@smuggler), method: :get %>
 <% end %>
-<h3>Mission Info</h3>
+<h3>Missions And Vehicles</h3>
 <% @smuggler.missions.each do |mission| %>
+<h4>Mission name:</h4>
 <%= mission.name %>
+<h4>Mission cost:</h4>
 <%= mission.cost %>
-<%= mission.vehicle.name %>
+<h4>Vehicle used</h4>
+<%= link_to mission.vehicle.name, vehicle_path(mission.vehicle.id), method: :get%>
 <%= image_tag mission.vehicle.image(:thumb) %>
 <% end %>
+
 
 
 
