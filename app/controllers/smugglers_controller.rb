@@ -75,7 +75,7 @@ class SmugglersController < ApplicationController
     end
   end
 
-
+layout "smug"
   private
   
   def smuggler_params
