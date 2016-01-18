@@ -39,9 +39,45 @@
    	position: absolute;
    	bottom: 15%;
    	left: 75%;
+}
 
-
+.welcome {
+	color: rgb(255, 255, 255);
+	font-family: 'Special Elite', cursive;
+   	font-size: 22px;
+   	position: relative;
+   	top: 3%;
+   	left: 3%;
+   	padding: 5px;
 } 
+
+.headline {
+  
+  font-family: 'Great Vibes', Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 40px;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+  position: absolute;
+  top: 2%;
+  left: 36%;
+  text-align: center;
+  line-height: 1px;
+
+}
+
+.logout {
+	color: rgb(255, 255, 255);
+	font-family: 'Special Elite', cursive;
+   	font-size: 16px;
+   	text-decoration: none;
+   	transition: 1s;
+   	padding: 20px;
+}
+
+.logout:hover {
+	text-decoration: underline;
+	color: #801515;
+}
 
 .login {
 	position: absolute;
@@ -60,7 +96,7 @@
 	left: 1%;
 	text-align: center;
 	padding: 10px;
-	background-color: rgba(255, 255, 255);
+
 }
 
 .menu-box {
@@ -70,22 +106,22 @@
 	padding: 10px;
 	text-decoration: none;
 	color: rgb(255, 255, 255);
-	transition: text-decoration 1s;
+
 }
 
 .linkc {
 	text-decoration: none;
 	font-family: 'Special Elite', cursive;
 	color: rgb(255, 255, 255);
-	/*transform: .7s;*/
-	transition: text-decoration 1s;
+	transition: 1s;
+
 
 }
 
 .linkc:hover {
-	/*text-decoration: ital*/
+
 	text-decoration: underline;
-	text-transform:;
+	color: #801515;
 }
 
 
