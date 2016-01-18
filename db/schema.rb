@@ -24,10 +24,7 @@ ActiveRecord::Schema.define(version: 20160117212637) do
     t.integer  "containers"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "tycoon_id"
   end
-
-  add_index "missions", ["tycoon_id"], name: "index_missions_on_tycoon_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"

@@ -1,18 +1,8 @@
 
-<<<<<<< HEAD
-<% @smugglers.each do |smuggler| %>
-	<%= link_to(smuggler.username, smuggler_path(smuggler.id), method: :get) %>
-	<%= smuggler.username %>
-	<%= smuggler.email %>
-	<% if @current_smuggler.following?(smuggler) %>
-		<%= button_to "unfollow", smuggler_relationship_path(smuggler.id, @current_smuggler.id), method: :delete %>
-	<% else %>
-		<%= button_to "follow", smuggler_relationships_path(smuggler.id, @current_smuggler.id), method: :post %>
-	<% end %>
-<% end %>
+
 
 <!-- So, what's going on here is one path is pluralized and the DELETE path isn't. This can be fixed in routes, but for now its working fine. Check out rake routes.... -->
-=======
+
 <div class = "user_content">
 
 
@@ -21,6 +11,13 @@
 			<% @smugglers.each do |smuggler| %>
 				<%= link_to(image_tag(smuggler.avatar.url(:thumb)), smuggler_path(smuggler.id), method: :get, class: 'avatar') %>
 				<%= link_to smuggler.username, smuggler_path(smuggler.id), method: :get, class: 'smuggler_name' %>
+				<% if logged_in? %>
+					<% if current_smuggler.following?(smuggler) %>
+						<%= button_to "unfollow", smuggler_relationship_path(smuggler.id, current_smuggler.id), method: :delete %>
+					<% else %>
+						<%= button_to "follow", smuggler_relationships_path(smuggler.id, current_smuggler.id), method: :post %>
+					<% end %>
+				<% end %>
 				<br><br>
 			<% end %>
 		<h3>The Tycoons</h3>
@@ -30,5 +27,3 @@
 		<% end %>
 	</div>
 </div>
-
->>>>>>> master
