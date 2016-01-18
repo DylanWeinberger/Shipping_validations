@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
 
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
   get 'vehicles/index'
 
   get 'vehicles/new'
 
-resources :smugglers
+# Nested relationship here
+# smugglers/:id/relationships/:id
+resources :smugglers do
+  resources :relationships
+end
+
+
 resources :tycoons
 resources :missions
 resources :vehicles
@@ -19,6 +29,12 @@ resources :vehicles
   post 'login' => 'sessions#create_smuggler_session',  as: :login_smuggler
   delete 'logout' => 'sessions#destroy_session', as: :logout
   post 'login_tycoon' => 'sessions#create_tycoon_session', as: :login_tycoon
+
+
+  # Relationship Routes
+  post '/smuggler/:smuggler_id/' => 'relationships#create'
+  delete '/smuggler/:smuggler_id' => 'relationships#destroy'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
