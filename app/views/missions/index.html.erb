@@ -1,9 +1,7 @@
 <h1>Mission List</h1>
 <% @missions.each do |m| %>
-	<%= m.name %>
-	<%= m.smuggler.username %>
-	<%= m.cargo %>
-	<%= m.containers %>
-	<%= m.cost %>
+	<%= link_to(m.name, mission_path(m.id), method: :get, class: 'mission_index') %>
+	<br>
+
 	<% end %>
 

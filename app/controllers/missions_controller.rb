@@ -8,27 +8,39 @@ class MissionsController < ApplicationController
 	def new
 		@mission = Mission.new
 		@vehicles = Vehicle.all
+		@smugglers = Smuggler.all
 	end
 
 	def create
 		@mission = Mission.new(mission_params)
-		@mission.smuggler_id = session[:smuggler_id]
-		if @mission.origin != @mission.destination
-			if @mission.save
-				flash[:notice] = "Your mission was saved"
-				redirect_to root_path
+		if logged_in_ty?
+			if @mission.origin != @mission.destination
+				if @mission.save
+					flash[:notice] = "Your mission was saved"
+					redirect_to root_path
+				else
+					flash[:notice] = "Your mission was not saved"
+					redirect_to root_path
+				end
 			else
-				flash[:notice] = "Your mission was not saved"
-				redirect_to root_path
+				redirect_to :back
 			end
 		else
 			redirect_to :back
-		end
+			flash[:notice] = "Must be logged in as a Tycoon to create a Mission!"
+		end	
 	end
 
 	def show
 
 		@mission = Mission.find(params[:id])
+		@smuggler_id = @mission.smuggler_id
+		# if Smuggler.find(@smuggler_id) 
+		# 	@smuggler = Smuggler.find(@smuggler_id) 
+		# else
+		# 	@smuggler = "Classified."
+		# end
+		# the above code is an attempt to show a smuggler name on a mission page.
 
 	end
 
@@ -43,15 +55,23 @@ class MissionsController < ApplicationController
 	end
 
 	def destroy
-		@mission = Mission.find(params[:id])
-		@mission.destroy
+		if logged_in_ty?
+			@mission = Mission.find(params[:id])
+			@mission.destroy
+			redirect_to missions_path
+		else
+			redirect_to :back
+			flash[:notice] = "You must be a Tycoon to cancel a mission."
+		end
 	end
+
+	layout 'mission'
 
 	private
 
 	def mission_params
 
-	params.require(:mission).permit(:cost, :cargo, :origin, :destination, :name, :vehicle_id)
+	params.require(:mission).permit(:cost, :cargo, :origin, :destination, :name, :vehicle_id, :smuggler_id)
 	end
 
 end

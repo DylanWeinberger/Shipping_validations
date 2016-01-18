@@ -1,0 +1,6 @@
+<%=content_tag :h1, @vehicle.name %>
+<%= image_tag @vehicle.image(:medium) %>
+<h4>Missions</h4>
+<% @vehicle.missions.each do |m| %>
+	<%= m.name %>
+	<% end %>

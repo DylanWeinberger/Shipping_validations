@@ -1,0 +1,13 @@
+			<h1>Update your Profile</h1>
+			<%= form_for @tycoon do |f| %>
+			<%= f.label :username %>
+			<%= f.text_field :username %>
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+			<%= f.label :cigar %>
+			<%= f.text_field :cigar %>
+
+			<%= f.label :avatar %>
+			<%= f.file_field :avatar %>
+			<%= f.submit :update %>
+			<% end %>

@@ -1,3 +1,23 @@
 <h1>Mission Page</h1>
 
-<%= @mission.name %>
+<%= content_tag :p, "name: #{@mission.name}" %>
+
+<%= content_tag :p, "cost: $#{@mission.cost}" %>
+<%= content_tag :p, "origin:#{@mission.origin}" %>
+<%= content_tag :p, "destination: #{@mission.destination}"%>
+<%= content_tag :p, "cargo: #{@mission.cargo}" %>
+<%= content_tag :p, "containers #{@mission.containers}" %>
+<%= content_tag :p, "Vehicle Used: #{@mission.vehicle.name}" %>
+<%= content_tag :p, "Smuggler: #{@mission.smuggler.username}" %>
+<% if logged_in_ty? %>
+<%= link_to "Cancel Mission", mission_path(@mission), method: :delete %>
+<% end %>
+
+
+    <!-- t.decimal  "cost" -->
+<!--     t.text     "cargo"
+    t.string   "origin"
+    t.string   "destination"
+    t.string   "name"
+    t.integer  "containers"
+ -->
