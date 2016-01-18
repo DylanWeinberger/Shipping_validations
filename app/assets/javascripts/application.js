@@ -16,7 +16,7 @@
 //= require_tree .
 $(document).ready(function(){
 
-	$( "#content_container" ).hide().delay( 1100 ).fadeIn( 1500 );
+	$( "#content_container" ).hide().delay( 500 ).fadeIn( 2500 );
 	$( ".headline").hide().fadeIn(2500).delay(3000).fadeOut(8000);
 
 });

@@ -1,17 +1,21 @@
 class TycoonsController < ApplicationController
 	def index
 		@tycoons = Tycoon.all
+		# make the variable equal to all tycoons to display on index.
 	end
 
 	def show
 		@tycoon = Tycoon.find(params[:id])
+		# make variable equal to the corresponding tycoon's page.
 	end
 
 	def new
 		@tycoon = Tycoon.new
+		# variable for creating a new tycoon
 	end
 
 	def create
+		# passing a new tycoon the tycoon strong params.
 		@tycoon = Tycoon.new(tycoon_params)
 		if @tycoon.save
 			redirect_to :back
@@ -22,14 +26,14 @@ class TycoonsController < ApplicationController
 		end
 	end
 
-	 def edit
+	def edit
     @tycoon = Tycoon.find(params[:id])
 
-  end
+  	end
 
   def update
     @tycoon = Tycoon.find(params[:id])
-    if session[:tycoon_id]
+    if logged_in_ty?
       @tycoon.update(tycoon_params)
       redirect_to tycoon_path @tycoon
       flash[:notice] = "Tycoon Updated!"

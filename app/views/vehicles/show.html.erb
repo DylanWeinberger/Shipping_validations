@@ -1,6 +1,9 @@
+<!-- The code below will print out the current vehicle name and its image. -->
 <%=content_tag :h1, @vehicle.name %>
 <%= image_tag @vehicle.image(:medium) %>
 <h4>Missions</h4>
+<!-- The code below will print out the names of all missions associated with this vehicle. The name will link to that missions show page. -->
 <% @vehicle.missions.each do |m| %>
-	<%= m.name %>
+	<%= link_to m.name, mission_path(m.id), method: :get, class: 'smuggler_name' %>
+	<br>
 	<% end %>

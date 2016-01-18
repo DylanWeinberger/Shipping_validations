@@ -7,20 +7,15 @@
 <%= content_tag :p, "destination: #{@mission.destination}"%>
 <%= content_tag :p, "cargo: #{@mission.cargo}" %>
 <%= content_tag :p, "containers #{@mission.containers}" %>
-<%= content_tag :p, "Vehicle Used: #{@mission.vehicle.name}" %>
+<%= link_to "Vehicle Used: #{@mission.vehicle.name}", vehicle_path(@mission.vehicle.id), method: :get, class: "smuggler_name" %>
 <%= image_tag @mission.vehicle.image.url(:medium) %>
-<%= content_tag :p, "Smuggler: #{@mission.smuggler.username}" %>
+<br>
+<%= link_to "Smuggler: #{@mission.smuggler.username}", smuggler_path(@mission.smuggler.id), method: :get, class: "smuggler_name" %>
+<br>
 <%= image_tag @mission.smuggler.avatar.url(:medium) %>
 <%= content_tag :p, "Date: #{@mission.created_at}" %>
 <% if logged_in_ty? %>
-<%= link_to "Cancel Mission", mission_path(@mission), method: :delete %>
+<%= link_to "Cancel Mission", mission_path(@mission), method: :delete, class: "smuggler_name" %>
 <% end %>
 
 
-    <!-- t.decimal  "cost" -->
-<!--     t.text     "cargo"
-    t.string   "origin"
-    t.string   "destination"
-    t.string   "name"
-    t.integer  "containers"
- -->
