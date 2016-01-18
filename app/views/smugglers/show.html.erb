@@ -2,21 +2,27 @@
 <%= @smuggler.username %>
 <h4>Mugshot:</h4>
 <%= image_tag @smuggler.avatar.url(:medium) %>
+<br>
 <% if logged_in_ty? %>
-	<%= link_to "Delete Smuggler", smuggler_path(@smuggler), method: :delete %>
-	<%= link_to "Update Smuggler", edit_smuggler_path(@smuggler), method: :get %>
+	<%= link_to "Delete Smuggler", smuggler_path(@smuggler), method: :delete, class: "smuggler_name" %>
+	<br>
+	<%= link_to "Update Smuggler", edit_smuggler_path(@smuggler), method: :get, class: "smuggler_name" %>
 <% elsif logged_in? %>
 	<% current_smuggler.id == @smuggler.id %>
-		<%= link_to "Delete Smuggler", smuggler_path(@smuggler), method: :delete %>
-		<%= link_to "Update Smuggler", edit_smuggler_path(@smuggler), method: :get %>
+		<%= link_to "Delete Smuggler", smuggler_path(@smuggler), method: :delete, class: "smuggler_name" %>
+		<br>
+		<%= link_to "Update Smuggler", edit_smuggler_path(@smuggler), method: :get, class: "smuggler_name" %>
 <% end %>
 <h3>Missions And Vehicles</h3>
 <% @smuggler.missions.each do |mission| %>
-<%= content_tag :p, "Mission: #{mission.name}" %> 
+<%= link_to "Mission: #{mission.name}", mission_path(mission.id), method: :get, class: "smuggler_name" %> 
+<br>
 <%= content_tag :p, "Cost: $#{mission.cost} usd" %> 
-<h4>Vehicle used</h4>
-<%= link_to mission.vehicle.name, vehicle_path(mission.vehicle.id), method: :get%>
+<br>
+<%= link_to mission.vehicle.name, vehicle_path(mission.vehicle.id), method: :get, class: "smuggler_name" %>
+<br>
 <%= image_tag mission.vehicle.image(:thumb) %>
+<br><br>
 <% end %>
 
 
