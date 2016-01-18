@@ -5,10 +5,10 @@
 <%= link_to "Fire Smuggler", smuggler_path(@smuggler), method: :delete %>
 =======
 <h1>Smuggler's Profile Page</h1>
-<h4>Alias:</h4>
+<%= content_tag :p, "Alias: #{@smuggler.username }" %>
 <%= @smuggler.username %>
 <h4>Mugshot:</h4>
-<%= image_tag @smuggler.avatar.url(:thumb) %>
+<%= image_tag @smuggler.avatar.url(:medium) %>
 <% if logged_in_ty? %>
 	<%= link_to "Delete Smuggler", smuggler_path(@smuggler), method: :delete %>
 	<%= link_to "Update Smuggler", edit_smuggler_path(@smuggler), method: :get %>
@@ -19,10 +19,8 @@
 <% end %>
 <h3>Missions And Vehicles</h3>
 <% @smuggler.missions.each do |mission| %>
-<h4>Mission name:</h4>
-<%= mission.name %>
-<h4>Mission cost:</h4>
-<%= mission.cost %>
+<%= content_tag :p, "Mission: #{mission.name}" %> 
+<%= content_tag :p, "Cost: $#{mission.name} usd" %> 
 <h4>Vehicle used</h4>
 <%= link_to mission.vehicle.name, vehicle_path(mission.vehicle.id), method: :get%>
 <%= image_tag mission.vehicle.image(:thumb) %>
