@@ -55,23 +55,23 @@ class SmugglersController < ApplicationController
 
   def destroy
     @smuggler = Smuggler.find(params[:id])
-    if current_smuggler
-      if current_smuggler.id == Smuggler.find(params[:id])
-    	    @smuggler.destroy
-          session[:smuggler_id] = nil
-          redirect_to smugglers_path
-          flash[:notice] = "Account Deleted."
-      elsif session[:tycoon_id]
-        @smuggler.destroy
-        redirect_to smugglers_path
-        flash[:notice] = "Account Deleted."
-      else
-        redirect_to :back
-        flash[:notice] = "Not your account to delete."  
-      end
+    if logged_in_ty? 
+      @smuggler.destroy
+      redirect_to smugglers_path
+      flash[:notice] = "Account Deleted."
+    elsif logged_in?
+        if @current_smuggler.id == @smuggler.id
+          	@smuggler.destroy
+            session[:smuggler_id] = nil
+            redirect_to smugglers_path
+            flash[:notice] = "Account Deleted."
+        else
+            redirect_to :back
+            flash[:notice] = "Not your account to delete."  
+        end
     else
       redirect_to :back
-      flash[:notice] = "Please sign in."
+      flash[:notice] = "You do not have permission to delete this account."  
     end
   end
 

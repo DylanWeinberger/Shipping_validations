@@ -1,4 +1,4 @@
-<h1>Mission Page</h1>
+<%= content_tag :h1, "Classified", class: "classified" %>
 
 <%= content_tag :p, "name: #{@mission.name}" %>
 
@@ -8,7 +8,10 @@
 <%= content_tag :p, "cargo: #{@mission.cargo}" %>
 <%= content_tag :p, "containers #{@mission.containers}" %>
 <%= content_tag :p, "Vehicle Used: #{@mission.vehicle.name}" %>
+<%= image_tag @mission.vehicle.image.url(:medium) %>
 <%= content_tag :p, "Smuggler: #{@mission.smuggler.username}" %>
+<%= image_tag @mission.smuggler.avatar.url(:medium) %>
+<%= content_tag :p, "Date: #{@mission.created_at}" %>
 <% if logged_in_ty? %>
 <%= link_to "Cancel Mission", mission_path(@mission), method: :delete %>
 <% end %>
