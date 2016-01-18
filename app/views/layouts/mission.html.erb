@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
  <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+ <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -31,9 +32,12 @@
 			</div>		
 		<% end %>
 		<div class = "welcome">				 
-			<% if logged_in? -%>Welcome, <%=current_smuggler.username %><% end -%>
-			<% if logged_in_ty? -%>Welcome, <%= current_tycoon.username %><% end -%>
-			<%= link_to("Log Out", '/logout', method: :delete) %>
+			<% if logged_in? -%>Welcome, <%=current_smuggler.username %>
+				<%= link_to("logout", '/logout', method: :delete, class: "logout") %>
+			<% end -%>
+			<% if logged_in_ty? -%>Welcome, <%= current_tycoon.username %>
+				<%= link_to("logout", '/logout', method: :delete, class: "logout") %>
+			<% end -%>	
 		</div>	
 		<div class = "nav">
 		 	<div class = "menu-box">
