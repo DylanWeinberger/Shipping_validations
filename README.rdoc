@@ -2,16 +2,16 @@ Ruby on Rails Shipping Website: FatCat Smuggling
 Creators Dylan Weinberger and Alan Bugsy Rhode.
 
 The Website has two different types of Users.
-<h3>Smugglers</h3>
+Smugglers:
 Smugglers can sign up and use the site to browse their connections with other smugglers through vehicles they have used on past missions. Smugglers can be chosen to go on a Mission from the create Mission page. Smugglers can add an avatar to their profile. Smugglers are also able to follow other smugglers and see what missions they were on and what vehciles they used.
 
-<h3>Tycoons</h3>
+Tycoons:
 Tycoons are the users who essentially run the website. They are able to create and subsequently own cars. They are able to create missions and assign different smugglers to those missions. They are also able to destroy any missions or delete and smuggler accounts. Pretty much all the things a normal Tycoon can do. Tycoons also are able to upload an avatar. Currently there is no way for a new Tycoon to be created from the views pages. They need to be created from the rails console. Since the Tycoons have a lot of power we want to wait till we have an ability to send smugglers an invitation to sign up.
 
-<h3>Missions</h3>
+Missions
 Missions can be created by the Tycoons. This model will join our Smugglers with Vehicles. They will also have plenty of information on the specific mission. They need to have a unique name, cost more than $1000, have a cargo description of more than 50 characters and an origin and destination that are not the same.
 
-<h3>Vehicles</h3>
+Vehicles
 Vehicles can also only be created by Tycoons. They are connected to smugglers by the missions that they were on together. Tycoons can upload a picture of their vehicle.
 
 The Website should have a very fluid feel with links to content on each index and show page allowing users to get lost by clicking around and seeing all the missions, smugglers, and vehciles that are connected. In the future we also hope to have Tycoons be connected with the missions. We would also like to add a feature allowing the networth of all missions the smuggler has been on as well as the networth of the tycoons missions created to be calculated and displayed on their profile.
