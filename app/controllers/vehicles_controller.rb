@@ -38,7 +38,6 @@ class VehiclesController < ApplicationController
   def vehicle_params
 
   	params.require(:vehicle).permit(:name, :image)
-  	# Would like to add a picture to vehicle attributes.
 
   end
 end

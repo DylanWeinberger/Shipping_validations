@@ -1,6 +1,6 @@
 <h1>Vehicle Showroom</h1>
 <% @vehicles.each do |v| %>
-	<%= link_to v.name, vehicle_path(v.id), method: :get %>
+	<%= link_to v.name, vehicle_path(v.id), method: :get, class: "smuggler_name" %>
 	<%= image_tag v.image(:thumb) %>
 	<br>
 	<% end %>

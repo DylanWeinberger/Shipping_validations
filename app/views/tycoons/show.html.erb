@@ -1,13 +1,18 @@
-<h1>Tycoon Profile Page</h1>
-<%= @tycoon.username %>
+
+<%=content_tag :h2, "#{@tycoon.username}" %>
+<br>
 <%= image_tag @tycoon.avatar.url(:medium) %>
+<br>
 <%= @tycoon.cigar %>
+<br>
 <%= @tycoon.networth %>
 
 <h2>Tycoons Vehicles</h2>
 <% @tycoon.vehicles.each do |v| %>
-<%= v.name %>
+<%= link_to v.name, vehicle_path(v.id), method: :get, class: "smuggler_name" %>
+<br>
 <%= image_tag v.image.url(:medium) %>
+<br>
 <% end %>
-
+<br>
 <%= link_to "Update Tycoon", edit_tycoon_path(@tycoon), method: :get %>

@@ -1,4 +1,6 @@
 class TycoonsController < ApplicationController
+	# Currently Tycoons must be created through the rails console. This is for security reasons since Tycoons have a lot of CRUD power.
+	 
 	def index
 		@tycoons = Tycoon.all
 		# make the variable equal to all tycoons to display on index.

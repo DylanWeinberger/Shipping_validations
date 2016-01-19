@@ -1,8 +1,3 @@
-
-
-
-<!-- So, what's going on here is one path is pluralized and the DELETE path isn't. This can be fixed in routes, but for now its working fine. Check out rake routes.... -->
-
 <div class = "user_content">
 
 
@@ -11,19 +6,22 @@
 			<% @smugglers.each do |smuggler| %>
 				<%= link_to(image_tag(smuggler.avatar.url(:thumb)), smuggler_path(smuggler.id), method: :get, class: 'avatar') %>
 				<%= link_to smuggler.username, smuggler_path(smuggler.id), method: :get, class: 'smuggler_name' %>
-				<% if logged_in? %>
-					<% if current_smuggler.following?(smuggler) %>
-						<%= button_to "unfollow", smuggler_relationship_path(smuggler.id, current_smuggler.id), method: :delete %>
-					<% else %>
-						<%= button_to "follow", smuggler_relationships_path(smuggler.id, current_smuggler.id), method: :post %>
+				<div class = "follow_button_div">
+					<% if logged_in? %>
+						<% if current_smuggler.following?(smuggler) %>
+							<%= button_to "unfollow", smuggler_relationship_path(smuggler.id, current_smuggler.id), method: :delete, remote: :true, class: "follow_button" %>
+						<% else %>
+							<%= button_to "Follow", smuggler_relationships_path(smuggler.id, current_smuggler.id), method: :post,  remote: true, class: "follow_button" %>
+						<% end %>
 					<% end %>
-				<% end %>
+				</div>	
 				<br><br>
 			<% end %>
 		<h3>The Tycoons</h3>
 		<% @tycoons.each do |t| %>
 			<%= link_to(image_tag(t.avatar.url(:thumb)), tycoon_path(t.id), method: :get, class: 'avatar') %>
 			<%= link_to t.username, tycoon_path(t.id), method: :get,  class: 'smuggler_name' %>
+			<br>
 		<% end %>
 	</div>
 </div>
