@@ -12,7 +12,7 @@ FatCat Smuggling was designed for Tycoons and Smugglers to connect. It allows th
 #Design
 
 The design was inspired by noir films and comic books. Pictures of the site in action to come soon.
-<img src = "assests/images/fatcat.png" />
+<img src = "app/assests/images/fatcat.png" />
 #Smugglers
 
 Smugglers can sign up and use the site to browse their connections with other smugglers through vehicles they have used on past missions. Smugglers can be chosen to go on a Mission from the create Mission page. Smugglers can add an avatar to their profile. Smugglers are also able to follow other smugglers and see what missions they were on and what vehciles they used.
