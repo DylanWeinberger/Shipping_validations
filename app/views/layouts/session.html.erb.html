@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fatcat</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+ <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+ <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div class="view_container">
+		<div class = "headline">
+		<h1>FatCat</h1>
+		<h4>Smuggling</h4>
+		</div>
+		<% unless session[:smuggler_id] || session[:tycoon_id] %>
+			<div class = "login">
+				<h3>Smugglers</h3>
+					<%= form_tag("/login", method: "post") do %>  
+						<%=label_tag(:username, "username:") %>   
+						<%=text_field_tag(:username) %>
+						<%=label_tag(:password, "password:") %>   
+						<%=password_field_tag(:password) %>   
+						<%=submit_tag("Submit") %> 
+					<% end %>
+
+				<h3>Tycoons</h3>
+					<%= form_tag("/login_tycoon", method: "post") do %>  
+						<%=label_tag(:username, "username:") %>   
+						<%=text_field_tag(:username) %>
+						<%=label_tag(:password, "password:") %>   
+						<%=password_field_tag(:password)%>   
+						<%=submit_tag("Submit") %> 
+					<% end %>
+			</div>		
+		<% end %>
+		<div class = "welcome">				 
+			<% if logged_in? -%>Welcome, <%=current_smuggler.username %>
+				<%= link_to("logout", '/logout', method: :delete, class: "logout") %>
+			<% end -%>
+			<% if logged_in_ty? -%>Welcome, <%= current_tycoon.username %>
+				<%= link_to("logout", '/logout', method: :delete, class: "logout") %>
+			<% end -%>	
+		</div>	
+		<div class = "nav">
+		 	<div class = "menu-box">
+				<%= link_to("Become a Smuggler", new_smuggler_path, method: :get, class: 'linkc') %>
+			</div>
+			<div class = "menu-box">
+			<%= link_to("All Smugglers", smugglers_path, method: :get, class: 'linkc') %>
+			</div>
+			<div class = "menu-box">
+				<%= link_to("Vehicle Showroom", vehicles_path, method: :get, class: 'linkc') %>
+			</div>
+			<div class = "menu-box">
+				<%= link_to("Mission Log", missions_path, method: :get, class: 'linkc') %>
+			</div>
+			<% if logged_in_ty? %>
+			<div class = "menu-box">
+				<%= link_to("Create a Mission", new_mission_path, method: :get, class: 'linkc') %>
+			</div>
+			<div class = "menu-box">
+				<%= link_to("Register your vehicle", new_vehicle_path, method: :get, class: 'linkc') %>
+			</div>
+			<% end %>
+		</div>
+		<% if flash[:notice] %>
+  			<div class = "alert-success"><%= flash[:notice] %></div>
+		<% end %>
+		<% if flash[:alert] %>
+  			<div class = "alert-success"><%= flash[:alert] %></div>
+		<% end %>
+	
+
+
+
+<%= yield %>
+
+
+	</div>
+</body>
+</html>

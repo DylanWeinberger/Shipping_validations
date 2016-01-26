@@ -1,3 +1,4 @@
+
 <h1>FatCat Smuggling</h1>
 <h4>Shipping application built with Ruby on Rails</h4>
 
@@ -24,5 +25,6 @@ Missions can be created by the Tycoons. This model will join our Smugglers with 
 
 #Vehicles
 Vehicles can also only be created by Tycoons. They are connected to smugglers by the missions that they were on together. Tycoons can upload a picture of their vehicle.
+
 
 
