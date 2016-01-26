@@ -5,7 +5,7 @@
 	<%= f.label :cargo %>
 	<%= f.text_field :cargo, size: "60x40" %>
 	<%= f.label :cost %>
-	<%= f.number_field :cost, step: 1 %>
+	<%= f.number_field :cost, min: 1000, step: 1 %>
 	<%= f.label :containers %>
 	<%= f.number_field :containers, step: 1 %>
 	<% v_options = options_from_collection_for_select(@vehicles, 'id', 'name') %>

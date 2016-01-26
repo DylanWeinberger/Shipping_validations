@@ -4,13 +4,12 @@ class Smuggler < ActiveRecord::Base
 
 	has_secure_password
 	validates_presence_of :password, on: :create
-	# validates_presence_of :username, on: :create
-	# validates_presence_of :email, on: :create
-	# validates_uniqueness_of  :email
-	# validates_uniqueness_of :username
-	# We can uncomment these when we are further along
+	validates_presence_of :username, on: :create
+	validates_presence_of :email, on: :create
+	validates_uniqueness_of  :email
+	validates_uniqueness_of :username
 
-# <<<<<<< HEAD
+
 	has_many :active_relationships, class_name: "Relationship",
 	foreign_key: "follower_id",
 	dependent: :destroy
@@ -32,10 +31,10 @@ class Smuggler < ActiveRecord::Base
 	def following?(other_smuggler)
 		following.include?(other_smuggler)
 	end
-# =======
+
 
 	#Paperclip below 
 	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50>" }
   	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
-# >>>>>>> master
+
 end
