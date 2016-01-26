@@ -12,7 +12,6 @@ FatCat Smuggling was designed for Tycoons and Smugglers to connect. It allows th
 #Design
 
 The design was inspired by noir films and comic books. Pictures of the site in action to come soon.
-fatcat.png
 <img src="../app/assests/images/fatcat.png"/>
 #Smugglers
 
