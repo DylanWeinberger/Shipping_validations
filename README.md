@@ -4,7 +4,7 @@
 
 Creators Dylan Weinberger and Alan Bugsy Rhode.
 
-<h4>IMPORTANT</h4>
+<h4>Before Using</h4>
 To create a Administrator with the ability to destroy everything you must use rails console from your command line. Running " Tycoon.create(username: "Knucky", email: "Knucky@aol.com", password:"12345") " in the rails console will create a new Tycoon. To log in use the Tycoon log in form with the username "Knucky" and the password "12345". We do not allow Tycoons to sign up as a security feature since they have full access to edit and delete anything on the site. In the future we will work on adding security features to allow Select Tycoons to sign up.
 
 FatCat Smuggling was designed for Tycoons and Smugglers to connect. It allows the Tycoons to keep track of their fleet of vehciles, missions, and the smugglers who go on those missions using those vehicles. The experience of anybody either visiting the page or using the page should be fairly seamless and fun. In each section there should be many places to click to bring you to profiles with more information. Each section should have a different background image relating to the section that they are in.
